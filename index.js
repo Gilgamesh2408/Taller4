@@ -6,6 +6,10 @@ const campoCCUsuario = document.getElementById('ccusuario');
 const campoContraseña = document.getElementById('ccpaswd');
 const campoEmail = document.getElementById('email');
 const campoConfirmarPaswd = document.getElementById('confirmarpaswd');
+const gastoMinimo = document.getElementById("gastoMinimo");
+const gastoMaximo = document.getElementById("gastoMaximo");
+const gastoMinimoValue = document.getElementById("gastoMinimoValue");
+const gastoMaximoValue = document.getElementById("gastoMaximoValue");
 
 document.getElementById('habilitarRegistro').addEventListener('change', function () {
   var inputs = document.getElementsByTagName('input');
@@ -14,7 +18,7 @@ document.getElementById('habilitarRegistro').addEventListener('change', function
   }
 });
 
-formulario.addEventListener('submit', function (event) {
+formulario.addEventListener('submit', function (event){ 
   if (campoNombre.value === '' || campoNombre.value.length > 25) {
     alert('El campo de nombre debe estar lleno y tener un máximo de 25 caracteres.');
     event.preventDefault();
@@ -84,4 +88,12 @@ formulario.addEventListener('submit', function (event) {
     event.preventDefault();
     return;
   }
+});
+
+gastoMinimo.addEventListener("input", () => {
+  gastoMinimoValue.textContent = gastoMinimo.value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+});
+
+gastoMaximo.addEventListener("input", () => {
+  gastoMaximoValue.textContent = gastoMaximo.value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 });
